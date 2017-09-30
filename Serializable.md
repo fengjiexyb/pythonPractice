@@ -14,7 +14,7 @@ Python常用的序列化模块有json、pickle、shelve。
 |shelve	|专门用于将Python数据类型的数据持久化到磁盘，shelve是一个类似dict的对象，操作十分便捷|	open()|只能用在Python中|
 
 # json
-##接口
+## 接口
 json模块提供了以下两个方法来进行序列化和反序列化操作：
 
 ```
