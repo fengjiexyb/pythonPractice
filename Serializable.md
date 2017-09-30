@@ -1,20 +1,22 @@
 
 Python序列化
-#持久化
+# 持久化
 所谓持久化就是把内存中的数据保存在外存（包括数据库）中，达到长期保存的目的。
-#序列化
+# 序列化
 序列化就是讲数据转换为可以通过网络传输或者可以存储到本地磁盘的数据格式（例如xml、json、字符串等）
 Python常用的序列化模块有json、pickle、shelve。
-#比较
+# 比较
+
 |模块名称|	描述|	提供的api|  |
 |----|----|	----|---|
 |json|	用于实现Python数据类型与通用（json）字符串之间的转换	|dumps()、dump()、loads()、load()|不能转换自定义类型。明文保存，保密性差|
 |pickle	|用于实现Python数据类型与Python特定二进制格式之间的转换	|dumps()、dump()、loads()、load()|不能用于Python之外|
 |shelve	|专门用于将Python数据类型的数据持久化到磁盘，shelve是一个类似dict的对象，操作十分便捷|	open()|只能用在Python中|
 
-#json
+# json
 ##接口
 json模块提供了以下两个方法来进行序列化和反序列化操作：
+
 ```
 # 序列化：将Python对象转换成json字符串
 dumps(obj, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=True, cls=None, indent=None, separators=None, default=None, sort_keys=False, **kw)
@@ -30,9 +32,9 @@ dump(obj, fp, skipkeys=False, ensure_ascii=True, check_circular=True, allow_nan=
 # 反序列化：读取指定文件中的json字符串并转换成Python对象
 load(fp, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_constant=None, object_pairs_hook=None, **kw)
 ```
-##JSON与Python之间数据类型对应关系
+## JSON与Python之间数据类型对应关系
 
-###Python转JSON
+### Python转JSON
 
 |Python	|JSON|
 |---|---|
@@ -43,7 +45,8 @@ load(fp, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_con
 |True|	true|
 |False|	false|
 |None|	null|
-###JSON转Python
+
+### JSON转Python
 
 |JSON|	Python|
 |--|--|
@@ -55,8 +58,9 @@ load(fp, cls=None, object_hook=None, parse_float=None, parse_int=None, parse_con
 |true|	True|
 |false|	False|
 |null|	None|
-##注意
-> 
+
+## 注意
+>
 * Python dict中的非字符串key被转换成JSON字符串时都会被转换为小写字符串；
 * 自定义类型不能直接转换，比较麻烦。[参考](http://www.cnblogs.com/yyds/p/6563608.html)
 * sort_keys参数： 表示序列化时是否对dict的key进行排序（dict默认是无序的）
