@@ -1,13 +1,13 @@
 # -*- coding: utf-8 -*-  
 '''
 @finish time:2017-09-30
-@author£»fengjiexyb 
+@author: fengjiexyb
 Python file operation
 '''
 from PIL import Image
 from pylab import *
 
-'''ÎÄ¼ş²Ù×÷Á·Ï°'''
+'''æ–‡ä»¶æ“ä½œç»ƒä¹ '''
 def fileOper(filename):
     # r is read; w is write;a is add.+ is read and write;b is binary mode
     # file is must exist when used r mode .
@@ -21,24 +21,24 @@ def fileOper(filename):
     file_object = open (filename,mode="r",buffering=-1)
     #file_object = open (filename,'rb')
     # readlines read all residual lines  and fun will exist enter char.
-    # ËùÒÔ ÓÃstrip()É¾³ı»Ø³µ·û
-    # s.strip(rm)        É¾³ıs×Ö·û´®ÖĞ¿ªÍ·¡¢½áÎ²´¦£¬Î»ÓÚ rmÉ¾³ıĞòÁĞµÄ×Ö·û
-    # s.lstrip(rm)       É¾³ıs×Ö·û´®ÖĞ¿ªÍ·´¦£¬Î»ÓÚ rmÉ¾³ıĞòÁĞµÄ×Ö·û
-    # s.rstrip(rm)      É¾³ıs×Ö·û´®ÖĞ½áÎ²´¦£¬Î»ÓÚ rmÉ¾³ıĞòÁĞµÄ×Ö·û
-    #  µ±rmÎª¿ÕÊ±£¬Ä¬ÈÏÉ¾³ı¿Õ°×·û£¨°üÀ¨'\n', '\r',  '\t',  ' ')
+    # æ‰€ä»¥ ç”¨strip()åˆ é™¤å›è½¦ç¬¦
+    # s.strip(rm)        åˆ é™¤så­—ç¬¦ä¸²ä¸­å¼€å¤´ã€ç»“å°¾å¤„ï¼Œä½äº rmåˆ é™¤åºåˆ—çš„å­—ç¬¦
+    # s.lstrip(rm)       åˆ é™¤så­—ç¬¦ä¸²ä¸­å¼€å¤´å¤„ï¼Œä½äº rmåˆ é™¤åºåˆ—çš„å­—ç¬¦
+    # s.rstrip(rm)      åˆ é™¤så­—ç¬¦ä¸²ä¸­ç»“å°¾å¤„ï¼Œä½äº rmåˆ é™¤åºåˆ—çš„å­—ç¬¦
+    #  å½“rmä¸ºç©ºæ—¶ï¼Œé»˜è®¤åˆ é™¤ç©ºç™½ç¬¦ï¼ˆåŒ…æ‹¬'\n', '\r',  '\t',  ' ')
     data=[line.strip() for line in file_object.readlines()]
-    # ÉÏÒ»ĞĞÉ¾³ıÁËÃ¿ĞĞÄ©Î²µÄ»Ø³µ·û
-    file_object.seek(0)#Ö¸Õë·µ»ØÎÄ¼şÍ·
-    # Èç¹ûÖ´ĞĞÏÂÃæÓï¾ä£¬print»á×Ô¶¯ÔÚÄ©Î²¼ÓÒ»¸ö»»ĞĞ·û£¬ËùÒÔ»á´òÓ¡Á½¸ö»Ø³µ¡£
+    # ä¸Šä¸€è¡Œåˆ é™¤äº†æ¯è¡Œæœ«å°¾çš„å›è½¦ç¬¦
+    file_object.seek(0)#æŒ‡é’ˆè¿”å›æ–‡ä»¶å¤´
+    # å¦‚æœæ‰§è¡Œä¸‹é¢è¯­å¥ï¼Œprintä¼šè‡ªåŠ¨åœ¨æœ«å°¾åŠ ä¸€ä¸ªæ¢è¡Œç¬¦ï¼Œæ‰€ä»¥ä¼šæ‰“å°ä¸¤ä¸ªå›è½¦ã€‚
     for eachline in file_object:
         print eachline
     file_object.seek(0)
-    # ÏÂÃæÕâÖÖ·½Ê½£¨¼Ó¶ººÅ£©¾Í¾Í¿ÉÒÔÈÃprint²»ÔÚ×Ô¶¯Ìí¼Ó»Ø³µ·û
+    # ä¸‹é¢è¿™ç§æ–¹å¼ï¼ˆåŠ é€—å·ï¼‰å°±å°±å¯ä»¥è®©printä¸åœ¨è‡ªåŠ¨æ·»åŠ å›è½¦ç¬¦
     for eachline in file_object:
         print eachline,
     file_object.close();
 
-'''ÓÃÀ´ÔÚÍ¼Æ¬ÉÏµã3¸öµã£¬»ñÈ¡Õâ3¸öµãµÄ×ø±ê'''
+'''ç”¨æ¥åœ¨å›¾ç‰‡ä¸Šç‚¹3ä¸ªç‚¹ï¼Œè·å–è¿™3ä¸ªç‚¹çš„åæ ‡'''
 def pointpic():
     im = array(Image.open('C:/Users/fengjiexyb/Desktop/ttt/Lenna.png'))
     imshow(im)
@@ -48,7 +48,7 @@ def pointpic():
     show()
 
 def main():
-    filename=raw_input('enter input filename:')#raw_input ²»½ÓÊÜ»»ĞĞ·û.×¢Òâ£ºÍêÕûÂ·¾¶
+    filename=raw_input('enter input filename:')#raw_input ä¸æ¥å—æ¢è¡Œç¬¦.æ³¨æ„ï¼šå®Œæ•´è·¯å¾„
     fileOper(filename)
 
 if __name__ == '__main__':
