@@ -14,11 +14,16 @@
 
 def fun():
     """ this is a word. """
+    fun.__doc__ = "dddd"
+    fun.version = "v0.2"
+    print fun.__doc__
+    print fun.version
     pass
 
 
 def main():
-    print fun.__doc__
+    fun()
+    # print fun.__doc__
     fun.version = 0.1
     print fun.version
 

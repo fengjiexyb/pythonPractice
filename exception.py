@@ -18,7 +18,11 @@ def assert_ex():
         assert 1 == 0, 'One does not equal zero silly!'
     # AssertionError is not baseError
     except AssertionError, args:
-        print '%s: %s' % (args.__class__.__name__, args)
+        print '%s: %s' % (args.__class__.__name__, args)  # todo 参考类一章
+        print '%s: %s' % (args.__class__.__doc__, args)
+        # args （名字可以自己定义）是一个包含来自导致异常代码的诊断信息的类实例。
+        # 类型：<class 'exception.TypeError'>
+        #
 
 
 def safe_float_raise(obj):
@@ -36,15 +40,25 @@ def safe_float_raise(obj):
             # raise TypeError , 'type'
             # raise excs[0], 'type'
             # raise ValueError('type')
-            #raise ex_value, 'type'
+            # raise ex_value, 'type'
 
             # raise
             raise SomeCustomException("Bad hostname")
+            # raise exceptionName，exceptArgs，exceptionTraceback
+            # 三个参数分别是异常的名字、说明、跟踪记录对象（当重新引发异常时，可以区分先前和当前的位置）
+            # raise exceptionName，exceptArgs 等同于 raise exceptionName(exceptArgs)
+            # raise 不带任何参数，表示重新引发前一个异常，如果之前没有异常，出发typeError
+            #TODO 异常列表
         else:
             return_val = float(obj)
     except (ValueError, TypeError), e:
          return_val = str(e)
     # baseError capture all except
+    # - BaseException
+    #   |- KeyboardInterrupt
+    #   |- SystemExit
+    #   |- Exception
+    #      |- all other current built-in exception
     except BaseException, e:
         if type(e) == SomeCustomException:
             print e.args
@@ -83,6 +97,30 @@ def safe_float_continuous_error(obj):
         print 'succeed'
     finally:
         return return_val
+
+
+def fun_with():
+    """
+    将open(r'somefileName')赋值给somefile
+    无论接下来with段中出现什么情况，都会对当前对象进行清理工作。例如file的file.close()方法。
+    系统自动创建一个上下文管理器，这个管理器就是在对象内实现了两个方法：__enter__() 和__exit__()
+　　__enter__()方法会在with的代码块执行之前执行，__exit__（）会在代码块执行结束后执行。
+　　__exit__()方法内会自带当前对象的清理方法。
+    :return:
+    """
+    with open(r'somefileName') as somefile:
+            for line in somefile:
+                print line
+    """
+    nested 函数：
+    with nested(A(), B(), C()) as (X, Y, Z):
+         # with-body code here
+    等同于：
+    with A() as X:
+        with B() as Y:
+            with C() as Z:
+                 # with-body code here
+    """
 
 
 def main():
