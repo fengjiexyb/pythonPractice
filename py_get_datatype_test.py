@@ -20,7 +20,7 @@
         get_ftype_counts() :  pandas 属性。官方不建议使用。用于统计复合类型变量内部元素的是稀疏还是稠密，每种类型有出现次数。
                                 支持DataFrame(内部元素不属于同于类型) 和 Series(内部元素同一类型的变量)。
     测试支持情况列表：
-        数据类型         type()     dtype   ftype   dtypes()    ftypes()    get_dtype_counts()  get_ftype_counts()
+        数据类型         type()     dtype   ftype   dtypes      ftypes      get_dtype_counts()  get_ftype_counts()
         int                 Y       N       N       N           N           N                   N
         list                Y       N       N       N           N           N                   N
         ndarray             Y       Y       N       N           N           N                   N
